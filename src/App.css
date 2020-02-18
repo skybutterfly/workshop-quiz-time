@@ -7,25 +7,97 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+.App-logo.lighthouse {
+  position: absolute;
+  bottom: 0;
+  left: -10vw;
+  height: 80vh;
+  opacity: 0.6;
+}
+
+.App-logo.seagull {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0.6;
+}
+
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 .App-header {
-  background-color: #282c34;
+  background-color: #C2DFFF;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: darkblue;
+}
+
+.quiz-item {
+  border-radius: 6px;
+  max-width: 120px;
+  z-index: 1000;
+  background-color: white;
+  padding: 80px;
+  margin: 30px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.12);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.12);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.12);
+}
+
+.quiz-item:active {
+  transform: translateY(6px);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.App-icon {
+  height: 120px;
+}
+
+.flex-container {
+  list-style: none;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row { 
+  -webkit-flex-direction: row; 
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw;
+}
+
+.flex-item {
+  background: tomato;
+  padding: 5px;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  
+  line-height: 50px;
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
 }
 
 @keyframes App-logo-spin {
