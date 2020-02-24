@@ -6,22 +6,28 @@ class App extends Component {
   state = {
     step: 0,
     nextQuestion: false,
-    selectedAnswers: [],
-    questionTotal: 0,
-    optionSelected: false,
+    selected: false,
+    correctAnswers: 0,
   };
 
+  selectAnswer = (answer) => {
+    const { correctAnswers } = this.state;
+    this.setState({ selected: true })
+    if (answer.correct) this.setState({ correctAnswers: correctAnswers + 1 })
+  }
+
   nextQuestion = () => {
-    this.setState({ step: this.state.step + 1 })
-    console.log('Next!', this.state.step);
+    const { step } = this.state;
+    this.setState({ 
+      step: step + 1, 
+      selected: false, 
+    })
   }
 
   render() {
-    const { step } = this.state;
+    const { step, selected, correctAnswers } = this.state;
     const questionLen = questionList.length;
     const lastQuestion = questionLen !== (step + 1);
-    console.log('questionNo', questionLen, (step + 1), lastQuestion)
-    console.log('q', questionList[step]);
     
     return (
       <div className="App">
@@ -41,7 +47,7 @@ class App extends Component {
         <div className="App-section">
           <ul className="flex-container row">
             { questionList[step].options.map((item, i) => 
-              <li key={i} className="quiz-item">
+              <li key={i} className={`quiz-item ${selected && 'active'} ${item.correct && selected && 'green'}`} onClick={() => this.selectAnswer(item)}>
                 <img src="https://image.flaticon.com/icons/svg/995/995179.svg" className="App-icon" alt="pineapple" />
                 <p>{item.option}</p>
               </li>
@@ -49,6 +55,7 @@ class App extends Component {
             }
             </ul>
             { lastQuestion && <button onClick={() => this.nextQuestion()}>Next</button> }
+            { !lastQuestion && selected && <p>{`You've answered ${correctAnswers} out of ${questionLen} correctly!`}</p> }
         </div>
       </div>
     );

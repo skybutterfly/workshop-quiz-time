@@ -62,6 +62,18 @@
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.12);
 }
 
+.quiz-item.active {
+  -webkit-box-shadow: 10px 10px 5px 0px red;
+  -moz-box-shadow: 10px 10px 5px 0px red;
+  box-shadow: 10px 10px 5px 0px red;
+}
+
+.quiz-item.active.green {
+  -webkit-box-shadow: 10px 10px 5px 0px lightgreen;
+  -moz-box-shadow: 10px 10px 5px 0px lightgreen;
+  box-shadow: 10px 10px 5px 0px lightgreen;
+}
+
 .quiz-item:active {
   transform: translateY(6px);
   -webkit-box-shadow: none;
