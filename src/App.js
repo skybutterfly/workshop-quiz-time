@@ -30,7 +30,6 @@ class App extends Component {
     const lastQuestion = questionLen !== (step + 1);
     const questionImage = 'https://image.flaticon.com/icons/svg/705/705926.svg';
     const correctImage = questionList[step].options.find(i => i.correct).image;
-    console.log('correctImage', correctImage);
     
     return (
       <div className="App">
@@ -53,6 +52,7 @@ class App extends Component {
               <li key={i} className={`quiz-item ${selected && 'active'} ${item.correct && selected && 'green'}`} onClick={() => this.selectAnswer(item)}>
                 <img src={item.image} className="App-icon" alt="pineapple" />
                 <p>{item.option}</p>
+                { selected && <p className="translation">{item.translation}</p> }
               </li>
               ) 
             }
