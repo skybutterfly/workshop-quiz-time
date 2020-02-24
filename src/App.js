@@ -11,9 +11,9 @@ class App extends Component {
   };
 
   selectAnswer = (answer) => {
-    const { correctAnswers } = this.state;
-    this.setState({ selected: true })
-    if (answer.correct) this.setState({ correctAnswers: correctAnswers + 1 })
+    const { correctAnswers, selected } = this.state;
+    if (answer.correct && !selected) this.setState({ correctAnswers: correctAnswers + 1 });
+    this.setState({ selected: true });
   }
 
   nextQuestion = () => {
@@ -28,6 +28,9 @@ class App extends Component {
     const { step, selected, correctAnswers } = this.state;
     const questionLen = questionList.length;
     const lastQuestion = questionLen !== (step + 1);
+    const questionImage = 'https://image.flaticon.com/icons/svg/705/705926.svg';
+    const correctImage = questionList[step].options.find(i => i.correct).image;
+    console.log('correctImage', correctImage);
     
     return (
       <div className="App">
@@ -38,7 +41,7 @@ class App extends Component {
             <div className="row">
               <div className="question-area">
               <h1>The (im)possible Croatian quiz!</h1>
-              <h3>Find the</h3>
+              <img src={ selected ? correctImage : questionImage } className="App-img" alt="question" />
               <p>{ questionList[step].question }</p>
               </div>
             </div>
@@ -48,7 +51,7 @@ class App extends Component {
           <ul className="flex-container row">
             { questionList[step].options.map((item, i) => 
               <li key={i} className={`quiz-item ${selected && 'active'} ${item.correct && selected && 'green'}`} onClick={() => this.selectAnswer(item)}>
-                <img src="https://image.flaticon.com/icons/svg/995/995179.svg" className="App-icon" alt="pineapple" />
+                <img src={item.image} className="App-icon" alt="pineapple" />
                 <p>{item.option}</p>
               </li>
               ) 

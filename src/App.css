@@ -10,6 +10,10 @@
   pointer-events: none;
 }
 
+.App-img {
+  height: 5rem;
+}
+
 .App-logo.lighthouse {
   position: absolute;
   bottom: 0;
