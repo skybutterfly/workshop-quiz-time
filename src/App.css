@@ -60,6 +60,7 @@
   z-index: 1000;
   background-color: white;
   padding: 50px;
+  cursor: pointer;
   margin: 30px;
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.12);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.12);
@@ -143,6 +144,7 @@ button {
   border: none;
   border-bottom: 2px solid darkblue;
   color: darkblue;
+  cursor: pointer;
   font-size: 1.8rem;
   padding: 8px 30px;
 }
